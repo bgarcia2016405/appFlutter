@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nproyecto/screens/profile_scrrem.dart';
+import 'package:nproyecto/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   
@@ -15,10 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context){
     return Scaffold(
       //* AppBar
-        appBar: AppBar(
-          title: Text('Hola mundo  $currentPage'),
-          elevation: 0,
-        ),
+        
         //? Cambiar la pantalla
         body: PageView(
           children: [
@@ -35,20 +34,48 @@ class _HomeScreenState extends State<HomeScreen> {
           // ignore: prefer_const_literals_to_create_immutables
           currentIndex: currentPage,
           onTap:(index){
-            currentPage = index;
+            if(index != currentPage){
+              if (index == 0) {
+            setState(() {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => HomeScreen(),
+              ));
+            });
+          }
+          if (index == 1) {
+            setState(() {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ProfileScreen(),
+              ));
+            });
+          }
 
-            setState(() {});
+          if(index == 2){
+            setState(() {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SettingsScreen(),
+              ));
+            });
+          }
+            }
+            
           },
           backgroundColor: Colors.blue,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white.withOpacity(0.5),
           items: [
             BottomNavigationBarItem(
+              icon: Icon( Icons.bungalow_rounded),
+              label: 'Home',
+              ),
+            BottomNavigationBarItem(
               icon: Icon( Icons.verified_user_rounded),
-              label: 'User'),
+              label: 'User',
+              ),
              BottomNavigationBarItem(
               icon: Icon( Icons.settings),
-              label: 'Settings'), 
+              label: 'Settings'
+              ), 
           ],
         ),
       );
@@ -73,3 +100,4 @@ class CustomScreen extends StatelessWidget {
     );
   }
 }
+

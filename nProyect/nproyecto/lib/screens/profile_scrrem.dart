@@ -25,8 +25,7 @@ class _ProfileScreen extends State<ProfileScreen> {
         body: 
         
         Container(
-          
-          color: Colors.blue[600],
+          color: Colors.grey[200],
           child: Center(
             
             child: Column(
@@ -42,10 +41,29 @@ class _ProfileScreen extends State<ProfileScreen> {
               ),
             ),
             Container(
+              child: Text('Nacimiento',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),),
+            ),
+            Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: <Widget>[
+               
+               buildButton(context, '11', 'Día'),
+               buildDivider(),
+               buildButton(context, '10', 'Mes'),
+               buildDivider(),
+               buildButton(context, '2002', 'Año'),
+             ]
+           ),
+           
+            Container(
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                 color: Colors.grey[600],
+                 color: Colors.blue[500],
                 
               ),
               child: Text('Byron Haldaír',
@@ -59,7 +77,7 @@ class _ProfileScreen extends State<ProfileScreen> {
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                 color: Colors.grey[600],
+                 color: Colors.pink[300],
                 
               ),
               child: Text('Gacía Guzmán',
@@ -69,6 +87,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                             )),
                             padding: EdgeInsets.only(left: 50,right: 50),
             ),
+           
           ],
         ),
           ),
@@ -127,5 +146,33 @@ class _ProfileScreen extends State<ProfileScreen> {
         ),
       );
   }
+
+ Widget buildDivider() => Container(
+        height: 24,
+        child: VerticalDivider(),
+      );
+
+   Widget buildButton(BuildContext context, String value, String text) => 
+    MaterialButton(
+      padding: EdgeInsets.symmetric(vertical: 4),
+        onPressed: () {},
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              value,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            ),
+            SizedBox(height: 2),
+            Text(
+              text,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+    );
 }
   
+ 
